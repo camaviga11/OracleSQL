@@ -6,35 +6,69 @@ En este repositorio se encuentarn las notas de las lecciones de Oracle SQL.
 
 * #### Creacion de un usuario
 ```
-create user cursooracle2 identified by "123456789"
-default tablespace system
-temporary tablespace temp
-quota unlimited on system;
+CREATE USER cursooracle IDENTIFIED BY "123456789"
+DEFAULT TABLESPACE SYSTEM
+TEMPORARY TABLESPACE TEMP
+QUOTA UNLIMITED ON SYSTEM;
 ```
-* ### Eliminar un usuario
+* #### Eliminar un usuario
 ```
-drop user cursooracle2 cascade;
+DROP USER cursooracle CASCADE;
+```
+* #### Ver al usuario al que estoy conectado
+```
+SELECT USER FROM DUAL;
 ```
 
 ### PRIVILEGIOS
 
 * #### Privilegio para conectarse a la base de datos
 ```
-grant create session to cursooracle2;
+GRANT CREATE SESSION TO cursooracle;
 ```
 * #### Crear tablas dentro de la base de datos
 ```
-grant create table to cursooracle2;
+GRANT CREATE TABLE TO cursooracle;
 ```
 * #### Crear vistas en la base de datos
 ```
-grant create view to cursooracle2;
+GRANT CREATE VIEW TO cursooracle;
 ```
 * #### Crear procedimientos
 ```
-grant create procedure to cursooracle2;
+GRANT CREATE PROCEDURE TO cursooracle;
 ```
 * #### Para crear secuencias
 ```
-grant create sequence to cursooracle2; 
+GRANT CREATE SEQUENCE TO cursooracle; 
+```
+
+### CREACIÓN DE TABLAS
+
+* #### Ver todas las tablas del sistema
+```
+select * from all_tables;
+```
+* #### Crear una tabla
+```
+CREATE TABLE empleado(
+    id_empleado INT NOT NULL,
+    nombre VARCHAR2(20),
+    direccion VARCHAR2(50),
+    documento VARCHAR2(10),
+    sueldo  NUMBER(6,2),
+    fecha_nacimiento DATE
+);
+```
+* #### Mostrar la estructura de una tabla
+```
+DESCRIBE empleado;
+```
+* #### Consultar la tabla
+```
+SELECT * FROM empleado;
+```
+* #### Insertar elementos en una tabla
+```
+INSERT INTO empleado VALUES(003,'Paola','Carrera 18 # 78-24',0147,4000.00, to_date('10/03/1988','dd/mm/yyyy'));
 ```
